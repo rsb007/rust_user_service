@@ -1,15 +1,15 @@
-/*
 use eventsourcing::{eventstore::MemoryEventStore, prelude::*, Result};
+use crate::eventsourcing::user_command::models::UserCommand;
+use crate::eventsourcing::user_event::models::UserEvent;
+use crate::eventsourcing::user_state::models::UserState;
 
-pub struct Employees;
-
-impl Aggregate for Employees {
-    type Event = EmployeeEvent;
-    type Command = EmployeeCommand;
-    type State = EmployeeState;
+impl Aggregate for PUser {
+    type Event = UserEvent;
+    type Command = UserCommand;
+    type State = UserState;
 
     fn apply_event(state: &Self::State, evt: Self::Event) -> Result<Self::State> {
-        let emp_data = match evt {
+        let user_data = match evt {
             EmployeeEvent::EmployeeCreated(Employee) => EmployeeState {
                 emp: Employee,
                 generation: state.generation + 1,
@@ -41,4 +41,4 @@ impl Aggregate for Employees {
         };
         Ok(evts)
     }
-}*/
+}

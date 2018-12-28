@@ -1,6 +1,6 @@
 use crate::user_service_impl::user_command::models::UserCommand;
-use crate::modals::user_registration::UserRegistration;
-use crate::modals::p_user::PUser;
+use crate::models::user_registration::UserRegistration;
+use crate::models::p_user::PUser;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Event)]
 #[event_type_version("1.0")]
@@ -19,7 +19,6 @@ impl From<UserCommand> for UserEvent {
                     email: UserRegistration.email,
                     password: UserRegistration.password
                 }),
-            _ =>
             }
     }
 }
